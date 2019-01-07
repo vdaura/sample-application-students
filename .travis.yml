@@ -10,4 +10,9 @@ before_install:
   - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 
 script:
-  - mvnw verify
+  - mvn verify
+
+
+cache: 
+   directories:
+  - "$HOME/.m2/repository"
