@@ -10,9 +10,18 @@ before_install:
   - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 
 script:
-  - mvn verify
-
+  - |
+    mvn clean install sonar:sonar \
+    -Dsonar.projectKey=<SONAR_PROJECT_KEY> \
+    -Dsonar.organization=<SONAR_ORGANISATION_KEY> \
+    -Dsonar.host.url=https://sonarcloud.io \
+    -Dsonar.login=$SONAR_TOKEN
 
 cache: 
    directories:
     - "$HOME/.m2/repository"
+
+
+env:
+  global:
+    - secure: "WEA1Euwa9KCU7JfBi/pb9SErUjk77D4VAh4TUqCrAC9/KYvJo8FcInc4xyngSekhIwCOYOKw3SqY2qT7rB3L3y8hgRHvmTHu27HYUBzbJO6iIia1Xe+0fBlSozT2XODaam1GrNihj5s0P3t1lydUcXggdb1jizlVKFpuDldP/TIJmI3t46ujUKaEWtU+4NZxYbrZv1C9CVs3oo4BF8aotxT5M/vjaWuZXfBgGr81rZl8RZ/q/858eef1k9nXWNJX0xnikAnnbI4bqjC073GeGlEOWJ+u4BMerDosR60N5kH1VvfE+kjtDxzg9D3zPKS5xifMjtg0EkGDI6vdKCdKTSIpdnmrwPvCCbU3qWoIXlaDhM6z7QVHFiMLOgcXxZREIRIiI8ENjBG9DwIdB7PGNqp7Ge4bFZRJi02oluQdmGrvbeNpeSONGIjaAXf82RHwyJTsPb7VTTzW+0ht7Z2LpLRh3dQTtY+LI8ni93M4YFgCW991Bl5+AdA6mzC0KMQA7kHyiKXr9QKrq6Iurb8d3583rpc9/tcG7MnAzedX9BDHz1YvtQxhmbSWG4DyIBqOBtMYIJ/Qo3ZPMqjs4RKjcwvVL+ebQs96w8fQOfUCAsgNBHnsvp68CjDu47qUBJN3plp28E0EbPY9Eb4GVeuAMomArmhVJCi8s2FR7667LxI="
