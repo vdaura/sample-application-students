@@ -13,7 +13,7 @@ script:
   - |
     mvn clean install sonar:sonar \
     -Dsonar.projectKey=vdaura_sample-application-students \
-    -Dsonar.organization=vdaura-github\
+    -Dsonar.organization=vdaura-github \
     -Dsonar.host.url=https://sonarcloud.io \
     -Dsonar.login=$SONAR_TOKEN
 
